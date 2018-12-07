@@ -18,6 +18,10 @@ As this project is relevant mostly to Czech Republic the description will contin
 * ukázat, jak se tweety na těchto dvou účtech jazykově liší 
 * navrhnout jednoduché klasifikační pravidlo, které tweety rozdělilo na pravého a falešného Tomia
 
+<p align="center">
+  <img src="https://github.com/jlacko/dos-tomios/blob/master/img/NOUN.png?raw=true" alt="podstatná jména"/>
+</p>
+
 ### Výsledkem snažení je:
 * erkový kód na stažení timeliny obou Tomiů (celkem je to necelých 5000 tweetů), rozbití do slov (78 tisíc slov, to je obsah tak čtyř, na VŠE možná pěti diplomek)
 * porovnání relativní četnosti (účty mají nestejný počet tweetů, takže absolutní hodnoty jsou neporovnatelné) hlavních slovních druhů oběma účty
