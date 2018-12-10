@@ -23,4 +23,4 @@ pred <- predict(strom, strom_data, type = "class")
 
 tblStrom <- table(strom_data$name, pred)
 
-print(paste("Přesnost:", as.character(formatC(100 * sum(diag(tblStrom))/sum(tblStrom)), digits = 2, format = "f"), "%"))
+print(paste0("Přesnost: ", as.character(formatC(100 * sum(diag(tblStrom))/sum(tblStrom)), digits = 2, format = "f"), "%"))
