@@ -1,5 +1,5 @@
 # Dos Tomios
-
+9 a neo
 **For my English speaking friends**: a fun project comparing word usage by real [Tomio Okamura](https://twitter.com/tomio_cz) (Czech xenophobe of Japanese descent) and [a fake account](https://twitter.com/Tomio_Okamura) operated in his name by an unknown prankster. 
 
 As this project is relevant mainly to the Czech Republic the description will continue in the Czech language.
@@ -20,7 +20,8 @@ Dle vypozorovaných odlišností navrhuje klasifikační algoritmus, který dok�
 * pracuju ve světě `tidyverse`, takže `dplyr` a `ggplot` místo base R
 * pro stažení dat používám [`rtweet`](https://rtweet.info/)
 * pro rozbití textu na slova [`udpipe`](https://bnosac.github.io/udpipe/docs/doc1.html)
-* pro klasifikaci [`rpart`](https://cran.r-project.org/web/packages/rpart/rpart.pdf) - zejména proto, že se dobře ukazuje; sofistikovanější techniky typu ensemble metod či neuronek by byly možná přesnější, ale za cenu horší srozumitelnosti výstupu.
+* pro úvodní klasifikaci [`rpart`](https://cran.r-project.org/web/packages/rpart/rpart.pdf) - což je rozhodovací strom; zejména proto, že se dobře ukazuje
+* pro sofistikovanější klasifikaci [`keras`](https://keras.rstudio.com/) - což je neuronová síť; přesnější než strom, ale trošku black box
 
 <p align="center">
   <img src="https://github.com/jlacko/dos-tomios/blob/master/img/NOUN.png?raw=true" alt="podstatná jména"/>
@@ -29,7 +30,7 @@ Dle vypozorovaných odlišností navrhuje klasifikační algoritmus, který dok�
 ### Výsledkem snažení je:
 * erkový kód na stažení timeliny obou Tomiů (celkem je to necelých 5000 tweetů), rozbití do slov (78 tisíc slov, to je obsah tak čtyř, na VŠE možná pěti diplomek)
 * porovnání relativní četnosti (účty mají nestejný počet tweetů, takže absolutní hodnoty jsou neporovnatelné) hlavních slovních druhů oběma účty
-* jednoduchý rozhodovací strom, který dokáže s jistotou přes 90% určit, zda ten či který tweet pochází od skutečného, či fejkového Tomia
+* dvě varianty rozhodovacího nástroje - strom s přesností ~90%  a neuronka s přesností ~92% 
 
 <p align="center">
   <img src="https://github.com/jlacko/dos-tomios/blob/master/img/decision-tree.png?raw=true" alt="rozhodovací strom"/>
@@ -41,7 +42,8 @@ Erkový kód, rozdělený pro přehlednost do pěti kroků v samostatných soubo
 - tokenizaci textu z tweetů do slov
 - frekvenční analýzu po slovních druzích a přípravu obrázků do adresáře /img
 - zpracování podkladu pro klasifikaci, včetně lehkého feature engineeringu dle poznatků z předchozí odrážky
-- vlastní klasifikace - zde pomocí stromu, ale jiné metody mohou dát jiné (i přesnější) výsledky
+- klasifikace pomocí stromu (rpart)
+- klasifikace pomocí neuronky (keras)
 
 V adresáři /data jsou podkladová data aktuální k začátku prosince 2018. Takže repo bude fungovat i bez hesla k twitteru, jenom nebude tak žhavě aktuální.
 
