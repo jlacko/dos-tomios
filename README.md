@@ -1,5 +1,5 @@
 # Dos Tomios
-9 a neo
+
 **For my English speaking friends**: a fun project comparing word usage by real [Tomio Okamura](https://twitter.com/tomio_cz) (Czech xenophobe of Japanese descent) and [a fake account](https://twitter.com/Tomio_Okamura) operated in his name by an unknown prankster. 
 
 As this project is relevant mainly to the Czech Republic the description will continue in the Czech language.
