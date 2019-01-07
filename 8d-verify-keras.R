@@ -13,7 +13,6 @@ pred <- model %>% # vektor pravděpodobnosti - inverval nula až jedna
   predict_proba(x_pred)
 
 verifikace <- pred_data %>% # doplnit podle pořadi id tweetu, pravděpodobnost + vlastní tweet
-  cbind(pred) %>%
-  left_join(tweets, by = c('id' = 'id'))
+  cbind(pred)
 
 write_csv(verifikace, './data/verifikace.csv') # uložit pro budoucí použití

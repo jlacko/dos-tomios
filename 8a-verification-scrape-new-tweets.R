@@ -39,4 +39,4 @@ tweets <- pravy %>%
 
 print(table(tweets$original, tweets$name)) # kolik se chytilo textu? a kolik z toho originálního?
 
-write_csv(tweets, './data/nove-tweeety.csv')
+write_csv(tweets, './data/nove-tweety.csv')
