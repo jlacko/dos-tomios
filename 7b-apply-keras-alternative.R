@@ -16,17 +16,16 @@ y_train <- data.matrix(train_data %>% select(pravy_tomio)) # jenom target
 vocab_size <- readr::read_csv('./data/slovnik.csv') %>% # = vybrat unikátní idčka slov a spočítat je
   pull(id_slovo) %>% 
   unique() %>%
-  length() 
+  length() + 1 # navíc za nulu na začátku...
 
 # deklarovat model
 
 model <- keras_model_sequential() 
 
 model %>% 
-  layer_embedding(input_dim = vocab_size, output_dim = 16) %>%
-  layer_global_average_pooling_1d() %>%
-  layer_dense(units = 30, activation = 'relu') %>%
-  layer_dense(units = 20, activation = 'relu') %>%
+  layer_embedding(input_dim = vocab_size, output_dim = 128) %>%
+  bidirectional(layer_lstm(units = 64)) %>%
+  layer_dropout(rate = 0.5) %>% 
   layer_dense(units = 1, activation = 'sigmoid') # jeden výstup (pravděpodobnost, že Tomio je pravý)
 
 model %>% compile(
