@@ -1,4 +1,11 @@
-# verifikace modelu - pro zjednodušení předpokládá v paměti načtený model jako objekt model = source 7b-apply-keras-alternative.R
+# verifikace modelu - načte Keras model z adresáře keras a uplatní ho na data o nově stažených tweetech
+
+library(tidyverse)
+library(keras)
+
+model <- load_model_hdf5("bi-ltsm.h5") # načíst...
+
+summary(model) # vytisknout shrnutí
 
 pred_data <- readr::read_csv('./data/new-keras-matrix.csv') %>%
   select(id, name, text)
@@ -16,3 +23,5 @@ verifikace <- pred_data %>% # doplnit podle pořadi id tweetu, pravděpodobnost 
   cbind(pred)
 
 write_csv(verifikace, './data/verifikace.csv') # uložit pro budoucí použití
+
+print(paste('Do ./data/verifikace.csv uloženo', nrow(x_pred), 'namodelovaných řádků.'))

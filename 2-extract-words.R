@@ -3,7 +3,7 @@
 library(tidyverse)
 library(udpipe)
 
-posledni_udpipe <- 'czech-ud-2.0-170801.udpipe' # (zatím) poslední verze na netu
+posledni_udpipe <- 'czech-pdt-ud-2.3-181115.udpipe' # (zatím) poslední verze na netu
 
 if (!file.exists(posledni_udpipe)) udpipe_download_model(language = "czech") # stačí jednou, má to přes 50 mega..
 
