@@ -24,4 +24,12 @@ verifikace <- pred_data %>% # doplnit podle pořadi id tweetu, pravděpodobnost 
 
 write_csv(verifikace, './data/verifikace.csv') # uložit pro budoucí použití
 
-print(paste('Do ./data/verifikace.csv uloženo', nrow(x_pred), 'namodelovaných řádků.'))
+print(paste('Do /data/verifikace.csv uloženo', nrow(x_pred), 'namodelovaných řádků.'))
+
+verifikace <- verifikace %>%
+  mutate(name_pred = ifelse(pred>0.5, 'tomio_cz', 'Tomio_Okamura'))
+
+conf_mtx <- table(verifikace$name, verifikace$name_pred)
+
+print(paste('Správně předpovězeno',sum(diag(conf_mtx)), 'z',sum(conf_mtx), 'tweetů, což představuje', round(100 * sum(diag(conf_mtx))/sum(conf_mtx), 2), 'procent.'))
+print(conf_mtx)

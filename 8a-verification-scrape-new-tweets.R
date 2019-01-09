@@ -8,7 +8,7 @@ library(rtweet)
 # je popsán na dokumentaci package rtweet: https://rtweet.info/#create-an-app
 twitter_token <- readRDS("token.rds")
 
-posledni <- read_csv('./data/tweety.csv') %>%
+posledni <- read_csv('./data/tweety.csv') %>% # nejvyšší IDčka známých tweetů obou účtů
   select(name, id) %>%
   group_by(name) %>%
   transmute(id = max(id)) %>%
@@ -16,12 +16,12 @@ posledni <- read_csv('./data/tweety.csv') %>%
 
 pravy <- get_timeline("tomio_cz", # dosud neznámé tweety Okamury s vlaječkou
                       n = 10000, 
-                      since_id = posledni[posledni$name == "tomio_cz",2]$id,
+                      since_id = posledni[posledni$name == "tomio_cz", ]$id,
                       token = twitter_token) 
 
 falesny <- get_timeline("Tomio_Okamura", # dosud neznámé tweety Okamury s obrázkem
                       n = 10000, 
-                      since_id = posledni[posledni$name == "Tomio_Okamura",2]$id,
+                      since_id = posledni[posledni$name == "Tomio_Okamura", ]$id,
                       token = twitter_token) 
 
 tweets <- pravy %>%
@@ -36,6 +36,8 @@ tweets <- pravy %>%
          lajku = favorite_count,
          retweetu = retweet_count,
          original)
+
+print(paste('Staženo', nrow(tweets), 'tweetů.'))
 
 print(table(tweets$original, tweets$name)) # kolik se chytilo textu? a kolik z toho originálního?
 
