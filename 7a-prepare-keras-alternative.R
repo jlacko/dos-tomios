@@ -8,7 +8,7 @@ slovnik <- readr::read_csv('./data/slova.csv') %>% # slova z tweetů
   count(lemma) %>%
   ungroup() %>%
   arrange(desc(n)) %>%
-  filter(n>=10) %>% # menší frekvence není vypovídající...
+  filter(n>=5) %>% # menší frekvence není vypovídající...
   mutate(id_slovo = row_number()) %>%
   select(lemma, id_slovo)
 
