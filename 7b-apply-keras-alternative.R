@@ -23,8 +23,8 @@ vocab_size <- readr::read_csv('./data/slovnik.csv') %>% # = vybrat unikátní id
 model <- keras_model_sequential() 
 
 model %>% 
-  layer_embedding(input_dim = vocab_size, output_dim = 128) %>%
-  bidirectional(layer_lstm(units = 64)) %>%
+  layer_embedding(input_dim = vocab_size, output_dim = 256) %>%
+  bidirectional(layer_lstm(units = 128)) %>%
   layer_dropout(rate = 0.5) %>% 
   layer_dense(units = 1, activation = 'sigmoid') # jeden výstup (pravděpodobnost, že Tomio je pravý)
 
@@ -39,8 +39,8 @@ model %>% compile(
 history <- model %>% 
   fit(
     x_train, y_train, 
-    epochs = 75, batch_size = 1000, # ale i tisíc může být...
-    validation_split = 0.2
+    epochs = 75, batch_size = nrow(train_data)/5, # ale i tisíc může být...
+    validation_split = 1/5
   )
 
 print(paste0("Přesnost: ", as.character(formatC(100 * last(history$metrics$acc), digits = 2, format = "f")), "%"))
