@@ -44,3 +44,6 @@ plot(history)
 dev.off()
 
 print(paste0("Přesnost: ", as.character(formatC(100 * last(history$metrics$acc), digits = 2, format = "f")), "%"))
+
+model %>% 
+  save_model_hdf5("./models/5-dense-layers.h5")

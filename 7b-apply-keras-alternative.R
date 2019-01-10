@@ -46,4 +46,4 @@ history <- model %>%
 print(paste0("Přesnost: ", as.character(formatC(100 * last(history$metrics$acc), digits = 2, format = "f")), "%"))
 
 model %>% 
-  save_model_hdf5("./keras/bi-ltsm.h5")
+  save_model_hdf5("./models/bi-ltsm.h5")

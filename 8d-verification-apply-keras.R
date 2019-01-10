@@ -3,7 +3,7 @@
 library(tidyverse)
 library(keras)
 
-model <- load_model_hdf5("./keras/bi-ltsm.h5") # načíst...
+model <- load_model_hdf5("./models/bi-ltsm.h5") # načíst...
 
 summary(model) # vytisknout shrnutí
 
